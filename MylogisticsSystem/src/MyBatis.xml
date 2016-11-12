@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+	<!-- 引用db.properties配置文件 -->
+	<properties resource="config.properties" />
+	<!-- 配置实体类的别名 -->
+	<typeAliases>
+		<package name="com.logistics.model" />
+	</typeAliases>
+	<!-- 环境配置 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<!-- 配置数据库连接信息 -->
+			<!-- type="POOLED" 意思为使用缓存 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${driverClassName}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- 注册userMapper.xml文件 -->
+	<mappers>
+		<!-- 注册ICustomDAL映射接口 ,注解方式 -->
+	<mapper class="com.logistics.idal.IMenuMapper"/>
+	<mapper class="com.logistics.idal.IUserMapper"/>
+	<mapper class="com.logistics.idal.ICityMapper"/>
+	<mapper class="com.logistics.idal.ICompanyMapper" />
+	<mapper class="com.logistics.idal.IAnnounceMapper" />
+	<mapper class="com.logistics.idal.ISystemMapper" />
+	<mapper class="com.logistics.idal.IDepartmentMapper" />
+		<mapper class="com.logistics.idal.IStationMapper" />
+	</mappers>
+</configuration>
